@@ -1,6 +1,5 @@
 User ID,First Name,Last Name,Email Address,Gender,Education Level,Salary,Department,Job Title,Employment Date,Employee Status,Registration Date
-User1,tr,gfh,keltonyili@gmail.com,Male,Masters,0,Security,Entry,2023-10-14,Part time,2023-10-14
-User2,Kelton,Li,keltonyili@gmail.com,Male,Masters,9999999999,IT,Chairperson,2024-01-13,Part time,2024-01-13
-User3,Kelton,Li,keltonyili@gmail.com,Male,Masters,50,Security,Entry,2024-01-13,Part time,2024-01-13
-User4,ertre,fgfdfg,ergreg@gmail.com,Male,Masters,5000000,Security,Entry,2024-02-03,Full time,2024-02-03
-User5,sefwef,wefewf,wfwef@gmail.com,Male,Masters,0,Security,Entry,2024-03-19,Part time,2024-03-19
+User1,Peter,Griffin,peter@gmail.com,Male,HND,9000,Security,Chairperson,2019-04-01,Full time,2024-04-20
+User2,Homer,Simpson,Homer@gmail.com,Male,Masters,500000,Cleaning,Entry,2019-04-19,Part time,2024-04-20
+User3,Henry,Hunde,hunde@gmail.com,Male,HND,10000,IT,Entry,2024-04-18,Part time,2024-04-20
+User4,Jenny,James,jenny@gmail.com,Male,HND,5000,Security,Entry,2024-04-18,Part time,2024-04-20
