@@ -48,4 +48,4 @@ if loginbutton:
         else:
             st.sidebar.write('Wrong Password')
     else:
-        st.sidebar.write('Please Enter Password')
+        st.sidebar.write('Please Type Password')

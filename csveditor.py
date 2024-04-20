@@ -22,3 +22,4 @@ if uploadcsv:
         with open(uploadcsv.name,'rb') as file: #open to make the file readable as each character
             data = file.read() #read the content
         st.download_button(label='Download Edited CSV file',data=data,file_name=uploadcsv.name)
+        
