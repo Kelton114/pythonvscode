@@ -9,7 +9,7 @@ with upload1:
     uploadcsv = st.file_uploader("Upload CSV file",type=['csv'])
 
 if uploadcsv:
-    csvfile = pd.read_csv(uploadcsv)
+    csvfile = pd.read_csv(f'{uploadcsv.name}')
     editfile = st.data_editor(csvfile,use_container_width=True)
 
     save1,save2 = st.columns(2)

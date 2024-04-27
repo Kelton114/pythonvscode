@@ -3,9 +3,10 @@ import pandas as pd
 st.set_page_config(layout='wide')
 df = pd.read_csv('SchoolApp.csv')
 CountryLink = pd.read_csv('countries.csv')
-st.title('Private School Application Form')
+
 menu = st.sidebar.selectbox('Menu',['Application','Data'])
 if menu == 'Application':
+    st.title('Private School Application Form')
     one, two = st.columns(2)
     with one:
         FirstName = st.text_input('Parent/guardian name:',placeholder='First')
@@ -38,14 +39,16 @@ if menu == 'Application':
         new_dict = pd.concat([df,dictdf],ignore_index=True)
         new_dict.to_csv('SchoolApp.csv',index=False) 
         st.success('Data Added')
-password = '123'
-passwordInput = st.sidebar.text_input('Please input password',type='password')
-Login = st.sidebar.button('Login')
-if Login:
-    if passwordInput:
-        if passwordInput == password:
-            st.dataframe(df,use_container_width=True)
+if menu == 'Data':
+
+    password = '123'
+    passwordInput = st.sidebar.text_input('Please input password',type='password')
+    Login = st.sidebar.button('Login')
+    if Login:
+        if passwordInput:
+            if passwordInput == password:
+                st.dataframe(df,use_container_width=True)
+            else:
+                st.sidebar.warning('Wrong Password')
         else:
-            st.sidebar.warning('Wrong Password')
-    else:
-        st.sidebar.warning('Please Enter Password')
+            st.sidebar.warning('Please Enter Password')
