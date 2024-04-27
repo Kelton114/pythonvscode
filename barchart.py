@@ -3,7 +3,7 @@ import pandas as pd
 import plotly_express as px
 
 df = pd.read_csv('barchart.csv')
-st.table(df)
+#st.table(df)
 
 Subjects = ['Python','Sql','ML','Tableau','Excel']
 Average = df[Subjects].mean().reset_index()
@@ -13,3 +13,5 @@ st.table(Average_Rename)
 
 barchart = px.bar(Average_Rename,x = 'Subject',y = 'Average')
 st.plotly_chart(barchart)
+piechart = px.pie(Average_Rename,names = 'Subject',values = 'Average')
+st.plotly_chart(piechart)

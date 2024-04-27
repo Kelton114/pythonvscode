@@ -18,7 +18,7 @@ import plotly.express as px
 import pandas as pd #this is used to read csv files and convert to a table (dataframe)
 st.set_page_config(layout='wide')    
 df=pd.read_csv('Studentdb.csv', dtype={'Average':str}) #pandas should read this csv file
-menu = st.sidebar.selectbox('Menu',['Input Scores','Student Database | Chart','Edit Database'])
+menu = st.sidebar.selectbox('Menu',['Input Scores','Student Database','Student Chart','Edit Database'])
 
 
 if menu == 'Input Scores':
@@ -57,17 +57,29 @@ if menu == 'Input Scores':
         st.success(f'Your total is {total} mark, average is {average} mark, your grade is {grade}')
 
 
-if menu == 'Student Database | Chart':
-    st.title('Students Database | Chart')
-    st.table(df) #streamlit should display as dataframe
+if menu == 'Student Chart':
+    st.title('Students Chart')
+    #st.table(df) #streamlit should display as dataframe
 
     subjects = ['English','Maths','Science','Computer']
     subject_ave = df[subjects].mean().reset_index()
     subjects_rename = subject_ave.rename(columns = {'index': 'Subject', 0: 'Average'})
     subjects_rename['Average'] = subjects_rename['Average'].astype(float).round(2).astype(str)
-    st.table(subjects_rename)
+    #st.table(subjects_rename)
 
     barchart = px.bar(subjects_rename, x = 'Subject', y = 'Average')
 
-    st.plotly_chart(barchart)
-    
+   
+    piechart = px.pie(subjects_rename, names = 'Subject',values='Average')
+   
+    chart_choose = st.radio('Choose Chart',['Pie Chart','Bar Chart'],horizontal=True)
+    if chart_choose == 'Pie Chart':
+        st.plotly_chart(piechart)
+    if chart_choose == 'Bar Chart':
+        st.plotly_chart(barchart)
+if menu == 'Student Database':
+    st.dataframe(df,use_container_width=True)
+    with open('Studentdb.csv', 'rb') as file:
+        data = file.read()
+    st.download_button(label='Download',data=data,file_name='Studentdb.csv')
+
