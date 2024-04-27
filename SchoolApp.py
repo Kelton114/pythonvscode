@@ -44,6 +44,7 @@ if menu == 'Data':
     password = '123'
     passwordInput = st.sidebar.text_input('Please input password',type='password')
     Login = st.sidebar.button('Login')
+    st.sidebar.write('Password : 123 to test')
     if Login:
         if passwordInput:
             if passwordInput == password:
