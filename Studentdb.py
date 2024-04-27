@@ -18,7 +18,7 @@ import plotly.express as px
 import pandas as pd #this is used to read csv files and convert to a table (dataframe)
 st.set_page_config(layout='wide')    
 df=pd.read_csv('Studentdb.csv', dtype={'Average':str}) #pandas should read this csv file
-menu = st.sidebar.selectbox('Menu',['Input Scores','Student Database','Student Chart','Edit Database'])
+menu = st.sidebar.selectbox('Menu',['Input Scores','Student Database','Student Chart'])
 
 
 if menu == 'Input Scores':
