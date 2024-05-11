@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
+from fpdf import FPDF
 st.set_page_config(layout='wide')
-df=pd.read_csv('employeedb1.csv')
+df=pd.read_csv('employeedb.csv')
 employee_id = 'User' + str(len(df) + 1)
 menu = st.sidebar.selectbox('Employee',['Register Here','Employee data base','Employee File'])
 if menu == 'Register Here':
@@ -24,7 +25,7 @@ if menu == 'Register Here':
         employee_df = pd.DataFrame({'User ID':[employee_id],'First Name':[firstname],'Last Name':[lastname],'Email Address': [email],'Gender':[gender],'Education Level':[el],
                     'Salary':salary,'Department':[department],'Job Title':[jobtitle],'Employment Date':[date],'Employee Status':[employeestatus],'Registration Date':[Registration]})
         new_df = pd.concat([df,employee_df],ignore_index=True)
-        new_df.to_csv('employeedb1.csv',index=False)
+        new_df.to_csv('employeedb.csv',index=False)
         st.success('New Employee Added')
 if menu == 'Employee File':
     s1,s2,s3 = st.columns(3)
@@ -84,10 +85,19 @@ if menu == 'Employee File':
                         st.write(getes)
                     with j:
                         st.write('Salary')
-                        st.write(getsa)
+                        st.write(f'**${getsa:,}**')
+                    if st.sidebar.button('Download Use FIle'):
+                        def design_pdf():
+                            pdf = FPDF() #keyword to activate, name your pdf variable
+                            pdf.add_page() #keyword to create new page
+
+                            pdf.set_font('Arial', size=12)
+                            pdf.set_xy(20,20)
+                            pdf.cell(40,text=f':orange[{getfn} {getln}]',ln=True,align='L')
+                    if st.sidebar.button('View'):
+                        pass
                 else:
                     st.error('User not found')  
-
 
 
 if menu ==('Employee data base'):
