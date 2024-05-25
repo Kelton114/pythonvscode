@@ -59,6 +59,6 @@ if menu == 'Update Note':
 
     if st.button('Save Updated Note'):
         readcsv.loc[readcsv['Title'] == select_notetitle, 'Content'] = updatenote
-        st.write(content)
+        #st.write(content)
         readcsv.to_csv('NoteBook.csv',index=False)
         st.success('Note Update Successfully')
