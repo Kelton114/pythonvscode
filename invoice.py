@@ -58,7 +58,7 @@ with cole1:
     st.write(':blue[Acc name: faisa|tech]')
     st.write(':blue[Acc Number: 509 173 1594]')
     st.write(':blue[Bank Name: UAE Bank]')
-    view = st.button(':blue[View inovioce]')
+    #view = st.button(':blue[View inovioce]')
 with cole2:
     st.write(':blue[Payment Due:]')
     st.header(f':green[${price:,}]')
@@ -238,12 +238,15 @@ pdf_function = generate_pdf()
 with open(pdf_function,'rb') as binary:
     pdf_data = binary.read()
 
-if view:
+#if view:
     #wrie the PDF using base64
-    pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
+    #pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
 
     #Generate the Html to enbed the PDF
-    pdf_enbed = f'<embed src="data:application/pdf;base64, {pdf_base64}" type="application/pdf" width="100%" height="600px" />'
+    #pdf_enbed = f'<embed src="data:application/pdf;base64, {pdf_base64}" type="application/pdf" width="100%" height="600px" />'
 
     #display the embedded PDF (Markdown help us to use HTML on streamlit)
-    st.markdown(pdf_enbed,unsafe_allow_html=True)
+    #st.markdown(pdf_enbed,unsafe_allow_html=True)
+
+if name and email and invoice and indate and duedate and Describtion and price and quantity:
+    st.download_button(label=":blue[Download PDF]", data=pdf_data, file_name='invoice.pdf', mime='application/pdf')
