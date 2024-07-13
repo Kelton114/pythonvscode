@@ -7,3 +7,4 @@ import streamlit as st
 -if yes, then ask how many people want to share the bill #use slider
 -Then show the amount each person must contribute to pay the bill
 """
+st.write('Something')
