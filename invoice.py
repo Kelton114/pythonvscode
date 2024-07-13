@@ -29,7 +29,17 @@ with colc2:
     with colc2b:
         invoice = st.text_input('sdsd',label_visibility='collapsed')
         indate = st.date_input('fgfgf',label_visibility='collapsed')
+        day = indate.day
+        month = indate.strftime('%B') #Full month: January,%b=short month: Jan
+        year = indate.year
+        indate = f'{day} {month} {year}'
+
         duedate = st.date_input('hjhjh',label_visibility="collapsed")
+        dday = duedate.day
+        dmonth = duedate.strftime('%B')
+        dyear = duedate.year
+        duedate = f'{dday}  {dmonth} {dyear}'
+
 st.write('')
 cold1,cold2,cold3,cold4 = st.columns(4)
 with cold1:
@@ -126,12 +136,12 @@ def generate_pdf():
     pdf.line(colx,coly+120,colx+180,coly+120)#start xy and the stop xy
     #in
     pdf.set_font(family='Courier',size=12,style='B')
-    pdf.set_xy(colx+150,coly+90)
+    pdf.set_xy(colx+150,coly+80)
     pdf.cell(w=colw,txt=f'{invoice}',ln=True,align='L')
 
     #in
     pdf.set_font(family='Courier',size=12,style='B')
-    pdf.set_xy(colx+150,coly+80)
+    pdf.set_xy(colx+150,coly+90)
     pdf.cell(w=colw,txt=f'{indate}',ln=True,align='L')
 
     #Describtion
@@ -193,6 +203,16 @@ def generate_pdf():
     pdf.set_font(family='Courier',size=12,style='B')
     pdf.set_xy(colx,coly+195)
     pdf.cell(w=colw,txt=f'Bank Name: UAE Bank',ln=True,align='L')
+
+    #Due:
+    pdf.set_font(family='Courier',size=12,style='B')
+    pdf.set_xy(colx,coly+205)
+    pdf.cell(w=colw,txt=f'Due:',ln=True,align='L')
+
+    #Due date
+    pdf.set_font(family='Courier',size=12,style='B')
+    pdf.set_xy(colx+20,coly+205)
+    pdf.cell(w=colw,txt=duedate,ln=True,align='L')
 
     #Payment Due:
     pdf.set_font(family='Times',size=12,style='B')
